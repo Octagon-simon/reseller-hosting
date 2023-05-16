@@ -6,7 +6,7 @@ DEFINE ('DB_USER', 'root');
 // Database password
 DEFINE ('DB_PASS', '');
 // Database name
-DEFINE ('DB_NAME', 'bulk_email_system');
+DEFINE ('DB_NAME', 'reseller');
 // Server URL
 DEFINE ('ORIGIN', 'http://localhost/bulk-email-system/');
 // Options for validation library
