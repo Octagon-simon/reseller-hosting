@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require '../models/database.class.php';
 require '../models/users.class.php';
 //funtions file
