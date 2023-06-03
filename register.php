@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<?php include 'includes/head.php' ?>
+    <?php include 'includes/head.php' ?>
 </head>
 
 <body class="bg-gradient-primary">
@@ -19,41 +19,29 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" id="form_register" method="post">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input name="first_name" type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input name="last_name" type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input name="email" type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input name="pass" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <input name="con_pass" type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <button type="submit" form="form_register" class="btn btn-primary btn-user btn-block">
                                     Register Account
-                                </a>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                                </button>
                             </form>
                             <hr>
                             <div class="text-center">
@@ -69,7 +57,40 @@
         </div>
 
     </div>
-<?php include 'includes/foot.php' ?>
+    <?php include 'includes/foot.php' ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toast = new Toasty({
+                transition: "pinItDown"
+            });
+
+            $('#form_register').on('submit', (e) => {
+                e.preventDefault();
+
+                const fd = new FormData(e.target);
+
+                //send request
+                fetch('./controllers/userController.php', {
+                        method: "post",
+                        mode: "cors",
+                        body: fd
+                    })
+                    .then(res => res.json())
+                    .then((res) => {
+                        console.log(res)
+                        if (res.success) {
+                            toast.success(res.data.message)
+                        } else {
+                            toast.error(res.data.message)
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        toast.error("An Error has occured")
+                    })
+            })
+        })
+    </script>
 </body>
 
 </html>

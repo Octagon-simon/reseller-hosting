@@ -4,7 +4,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Blank</title>
+<title>Vistacool Domain Hosting</title>
 
 <!-- Custom fonts for this template-->
 <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -14,3 +14,6 @@
 
 <!-- Custom styles for this template-->
 <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+<!-- put these into the <head> of your HTML -->
+<link href="assets/vendor/Toasty-js/dist/toasty.min.css" rel="stylesheet">
+<script src="assets/vendor/Toasty-js/dist/toasty.min.js" defer></script>
