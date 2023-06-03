@@ -24,14 +24,14 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" id="form_login" method="post">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input name="email" type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input name="pass" type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -41,16 +41,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
-                                        <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        </button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
@@ -71,7 +64,44 @@
 
     </div>
 
- <?php include 'includes/foot.php' ?>
+<?php include 'includes/foot.php' ?>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toast = new Toasty({
+                transition: "pinItDown"
+            });
+
+            $('#form_login').on('submit', (e) => {
+                e.preventDefault();
+
+                const fd = new FormData(e.target);
+
+                //send request
+                fetch('./controllers/userLogin.php', {
+                        method: "post",
+                        mode: "cors",
+                        body: fd
+                    })
+                    .then(res => res.json())
+                    .then((res) => {
+                        console.log(res)
+                        if (res.success) {
+                            toast.success(res.data.message);
+                            //redirect to login
+                            setTimeout( () => {
+                                window.location.href = "index.php";
+                            }, 3000)
+                        } else {
+                            toast.error(res.data.message)
+                        }
+                    })
+                    .catch(err => {
+                        console.error(err);
+                        toast.error("An Error has occured")
+                    })
+            })
+        })
+    </script>
 </body>
 
 </html>

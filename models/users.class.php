@@ -51,6 +51,18 @@ class users extends database {
         
     }
 
+    //retrieves a single user using email
+    public function get_user()
+    {
+        $statement = "SELECT * FROM users WHERE email = :email";
+        $param = [
+            'email'=>$this->user_email
+        ];
+        $execute = $this->select($statement,$param);
+
+        return $execute;
+    }
+
     public function get_users()
     {
         $statement = "SELECT * FROM users WHERE id=:id";

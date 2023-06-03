@@ -6,3 +6,5 @@ require '../models/users.class.php';
 require 'functions.php';
 //octavalidate - server-side validation library
 require('octaValidate-PHP/src/Validate.php');
+
+?>

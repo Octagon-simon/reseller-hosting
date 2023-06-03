@@ -39,14 +39,8 @@ class database {
 
         $statement->execute($param);
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC,);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    
-
-
-
-
-
-
 }
+
+?>

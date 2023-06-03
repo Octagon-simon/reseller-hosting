@@ -26,7 +26,7 @@ $valRules = array(
         ["EMAIL", "Your email contains invalid characters"]
     ),
     "pass" => array(
-        ["R", "Your first name is required"],
+        ["R", "Your password is required"],
         ["MINLENGTH", "8", "Your password must have a minimum of 8 characters"]
     ),
     "con_pass" => array(

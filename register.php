@@ -70,16 +70,19 @@
                 const fd = new FormData(e.target);
 
                 //send request
-                fetch('./controllers/userController.php', {
+                fetch('./controllers/userRegistration.php', {
                         method: "post",
                         mode: "cors",
                         body: fd
                     })
                     .then(res => res.json())
                     .then((res) => {
-                        console.log(res)
                         if (res.success) {
-                            toast.success(res.data.message)
+                            toast.success(res.data.message);
+                            //redirect to login
+                            setTimeout( () => {
+                                window.location.href = "index.php";
+                            }, 3000)
                         } else {
                             toast.error(res.data.message)
                         }
