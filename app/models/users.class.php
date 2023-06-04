@@ -74,4 +74,18 @@ class users extends database {
         return $execute;
     }
 
+    public function update_password()
+    {
+        $statement = "UPDATE users SET secret = :pass WHERE id = :id";
+
+        $param = [
+            'pass' => password_hash($this->user_password, PASSWORD_BCRYPT),
+            'id'=>$this->user_id
+        ];
+
+        $execute = $this->update($statement,$param);
+
+        return $execute;
+    }
+
 }

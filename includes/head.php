@@ -17,3 +17,5 @@
 <!-- put these into the <head> of your HTML -->
 <link href="assets/vendor/Toasty-js/dist/toasty.min.css" rel="stylesheet">
 <script src="assets/vendor/Toasty-js/dist/toasty.min.js" defer></script>
+<!--Octavalidate -->
+<script src="assets/js/ov.js"></script>

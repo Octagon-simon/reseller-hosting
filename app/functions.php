@@ -59,5 +59,19 @@ function sendMail($user_email, $user_name, $subject, $body)
         return 0;
     }
 }
+//replaces email placeholders with actual values
+function doDynamicEmail($replaceWith, $body)
+{
 
+    //return false if it isn't an array
+    if (!is_array($replaceWith))
+        return;
+
+    //loop through
+    foreach ($replaceWith as $key => $val) {
+        $body = str_replace('{' . strtoupper($key) . '}', $val, $body);
+    }
+
+    return $body;
+}
 ?>

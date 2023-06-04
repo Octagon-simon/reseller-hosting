@@ -7,9 +7,7 @@ use Validate\octaValidate;
 $user = new users();
 
 //Init the validation library
-$validate = new octaValidate('form_register', [
-    "strictMode" => true
-]);
+$validate = new octaValidate('form_register', OV_OPTIONS);
 
 //validation rules for validating user registration
 $valRules = array(
@@ -29,8 +27,10 @@ $valRules = array(
         ["R", "Your password is required"],
         ["MINLENGTH", "8", "Your password must have a minimum of 8 characters"]
     ),
+    //confirm password
     "con_pass" => array(
-        ["EQUAL", "pass", "Both passwords do not match"]
+        ["R", "Your password is required"],
+        ["EQUALTO", "pass", "Both passwords do not match"]
     ),
 );
 
@@ -77,3 +77,4 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         ]);
     }
 }
+?>

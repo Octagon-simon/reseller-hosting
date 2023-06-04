@@ -7,9 +7,7 @@ use Validate\octaValidate;
 $user = new users();
 
 //Init the validation library
-$validate = new octaValidate('form_login', [
-    "strictMode" => true
-]);
+$validate = new octaValidate('form_login', OV_OPTIONS);
 
 //validation rules for validating user registration
 $valRules = array(
@@ -58,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 ]);
             }
         } else {
-            doReturn(401, false, [
+            doReturn(400, false, [
                 "message" => "Form validation failed",
                 "formError" => true,
                 "formErrors" => $validate->getErrors()

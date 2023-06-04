@@ -8,10 +8,10 @@ DEFINE ('DB_PASS', '');
 // Database name
 DEFINE ('DB_NAME', 'reseller');
 // Server URL
-DEFINE ('ORIGIN', 'http://localhost/bulk-email-system/');
+DEFINE ('ORIGIN', 'http://localhost/reseller-hosting/');
 // Options for validation library
 DEFINE('OV_OPTIONS', array(
     "stripTags" => true,
     "strictMode" => true,
-    "strictWords" => ["null", "undefined"])
+    "strictWords" => ["null", "undefined", "admin"])
 );

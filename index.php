@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<?php include 'includes/head.php' ?>
+    <?php include 'includes/head.php' ?>
 </head>
 
 <body class="bg-gradient-primary">
@@ -26,13 +26,10 @@
                                     </div>
                                     <form class="user" id="form_login" method="post">
                                         <div class="form-group">
-                                            <input name="email" type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input octavalidate="R,EMAIL" name="email" type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input name="pass" type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input octavalidate="R" minlength="8" name="pass" type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -64,8 +61,8 @@
 
     </div>
 
-<?php include 'includes/foot.php' ?>
-<script>
+    <?php include 'includes/foot.php' ?>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const toast = new Toasty({
                 transition: "pinItDown"
@@ -73,36 +70,42 @@
 
             $('#form_login').on('submit', (e) => {
                 e.preventDefault();
-
-                const fd = new FormData(e.target);
-
-                //send request
-                fetch('./app/api/userController/userLogin.php', {
-                        method: "post",
-                        mode: "cors",
-                        body: fd
-                    })
-                    .then(res => res.json())
-                    .then((res) => {
-                        console.log(res)
-                        if (res.success) {
-                            toast.success(res.data.message);
-                            //redirect to login
-                            setTimeout( () => {
-                                window.location.href = "./pages/dashboard.php";
-                            }, 3000)
-                        } else {
-                            toast.error(res.data.message);
-                            //check if its a form error 
-                            if(res.data.formError && Object.entries(res.data.formErrors)){
-                                showErrors(res.data.formErrors)
+                //init validation library
+                const ov = new octaValidate("form_login");
+                //validate the form
+                if (ov.validate()) {
+                    //set form data
+                    const fd = new FormData(e.target);
+                    //send request
+                    fetch('./app/api/userController/userLogin.php', {
+                            method: "post",
+                            mode: "cors",
+                            body: fd
+                        })
+                        .then(res => res.json())
+                        .then((res) => {
+                            console.log(res)
+                            if (res.success) {
+                                toast.success(res.data.message);
+                                //redirect to login
+                                setTimeout(() => {
+                                    window.location.href = "./pages/dashboard.php";
+                                }, 3000)
+                            } else {
+                                toast.error(res.data.message);
+                                //check if its a form error 
+                                if (res.data.formError && Object.entries(res.data.formErrors)) {
+                                    showErrors(res.data.formErrors)
+                                }
                             }
-                        }
-                    })
-                    .catch(err => {
-                        console.error(err);
-                        toast.error("An Error has occured")
-                    })
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            toast.error("An Error has occured")
+                        })
+                } else {
+                    toast.error("Form validation failed")
+                }
             })
         })
     </script>

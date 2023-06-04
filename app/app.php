@@ -2,6 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require 'env.php';
 require 'models/database.class.php';
 require 'models/users.class.php';
 
