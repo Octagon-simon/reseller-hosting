@@ -35,25 +35,25 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="./admin/domain" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-globe"></i>
             <span>Domain</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="./admin/customer" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-user"></i>
             <span>Customer</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="./admin/billing" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-dollar-sign"></i>
             <span>Billing</span>
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="./admin/ssl" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-shield-alt"></i>
             <span>SSL Certificate</span>
         </a>
