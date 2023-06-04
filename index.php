@@ -77,19 +77,18 @@
                     //set form data
                     const fd = new FormData(e.target);
                     //send request
-                    fetch('./app/api/userController/userLogin.php', {
+                    fetch('api/users/userLogin.php', {
                             method: "post",
                             mode: "cors",
                             body: fd
                         })
                         .then(res => res.json())
                         .then((res) => {
-                            console.log(res)
                             if (res.success) {
                                 toast.success(res.data.message);
                                 //redirect to login
                                 setTimeout(() => {
-                                    window.location.href = "./pages/dashboard.php";
+                                    window.location.href = "./admin/dashboard";
                                 }, 3000)
                             } else {
                                 toast.error(res.data.message);

@@ -68,7 +68,7 @@ if (isset($_GET) && !empty($_GET['token']) && !empty($_GET['uid']) && !empty($_G
                                                         const fd = new FormData(e.target);
 
                                                         //send request
-                                                        fetch('./app/api/userController/sendResetLink.php', {
+                                                        fetch('api/users/sendResetLink.php', {
                                                                 method: "post",
                                                                 mode: "cors",
                                                                 body: fd
@@ -128,7 +128,7 @@ if (isset($_GET) && !empty($_GET['token']) && !empty($_GET['uid']) && !empty($_G
                                                         const fd = new FormData(e.target);
 
                                                         //send request
-                                                        fetch('./app/api/userController/resetPassword.php', {
+                                                        fetch('api/users/resetPassword.php', {
                                                                 method: "post",
                                                                 mode: "cors",
                                                                 body: fd

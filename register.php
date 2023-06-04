@@ -76,7 +76,7 @@
                     const fd = new FormData(e.target);
 
                     //send request
-                    fetch('./app/api/userController/userRegistration.php', {
+                    fetch('api/users/userRegistration.php', {
                             method: "post",
                             mode: "cors",
                             body: fd
