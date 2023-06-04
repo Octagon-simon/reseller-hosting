@@ -1,6 +1,6 @@
 <?php
 
-require('../app/app.php');
+require('../../app.php');
 
 use Validate\octaValidate;
 
@@ -66,7 +66,8 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
         }else{
             doReturn(400, false, [
                 "message" => "Form validation failed",
-                "error" => $validate->getErrors()
+                "formError" => true,
+                "formErrors" => $validate->getErrors()
             ]);
         }
     }catch(Exception $e){

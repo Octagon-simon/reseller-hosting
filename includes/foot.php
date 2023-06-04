@@ -38,6 +38,8 @@
 <!-- Page level custom scripts -->
 <script src="assets/js/demo/chart-area-demo.js"></script>
 <script src="assets/js/demo/chart-pie-demo.js"></script>
+<!--Octavalidate helper script -->
+<script src="assets/js/ov_helper.js"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {

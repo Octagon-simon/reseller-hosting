@@ -77,7 +77,7 @@
                 const fd = new FormData(e.target);
 
                 //send request
-                fetch('./controllers/userLogin.php', {
+                fetch('./app/api/userController/userLogin.php', {
                         method: "post",
                         mode: "cors",
                         body: fd
@@ -89,10 +89,14 @@
                             toast.success(res.data.message);
                             //redirect to login
                             setTimeout( () => {
-                                window.location.href = "index.php";
+                                window.location.href = "./pages/dashboard.php";
                             }, 3000)
                         } else {
-                            toast.error(res.data.message)
+                            toast.error(res.data.message);
+                            //check if its a form error 
+                            if(res.data.formError && Object.entries(res.data.formErrors)){
+                                showErrors(res.data.formErrors)
+                            }
                         }
                     })
                     .catch(err => {
