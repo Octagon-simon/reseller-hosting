@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
                 // sendMail($user_details['email'], 'Vistacool User', 'Reset Your Password', 
                 // doDynamicEmail([
                 //     "NAME" => $user_details['name'],
-                //     "LINK" => ORIGIN . '/forgot-password.php' . $query
+                //     "LINK" => ORIGIN . 'forgot-password.php' . $query
                 // ], $body));
                 //return data
                 doReturn(200, true, [
